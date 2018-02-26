@@ -56,7 +56,7 @@ function parse(text) {
     // TODO: FAQs
 
     // Live agent
-    if (/\b(agent|speak to someone)\b/i.test(text)) { return { text: "We currently have 1 live agent. Your estimated wait time is 1 minute." } }
+    if (/\b(agent|speak to someone|talk to someone|real person|customer support)\b/i.test(text)) { return { text: "We currently have 1 live agent. Your estimated wait time is 1 minute.", trigger: "livechat" } }
 
 
     // Greeting

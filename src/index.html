@@ -33,7 +33,7 @@
             methods: {
                 submit() {
                     $.ajax({
-                        url: "http://localhost:"+ (process.env.PORT || 3000) +"/api/chatbot/",
+                        url: "http://localhost:3000/api/chatbot/",
                         data: {
                             text: this.input
                         },
@@ -49,7 +49,7 @@
                 }
             },
             mounted() {
-                const socket = io.connect("localhost:3000");
+                const socket = io.connect("https://localhost:3000/");
                 console.log('socket', socket);
             }
         })
