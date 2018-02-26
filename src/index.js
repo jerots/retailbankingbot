@@ -57,6 +57,8 @@ function parse(text) {
 
     // Live agent
     if (/\b(agent|speak to someone|talk to someone|real person|customer support)\b/i.test(text)) { return { text: "We currently have 1 live agent. Your estimated wait time is 1 minute. [TRIGGER LIVECHAT]", trigger: "livechat" } }
+    
+    if (/\b(loan|loans|borrow|need money)\b/i.test(text)) { return { text: "[LOANS WILL BE DEVELOPED LATER]", trigger: "livechat" } }
 
 
     // Greeting
