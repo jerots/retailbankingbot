@@ -1,8 +1,14 @@
 const express = require('express')
 const app = express()
+var expressVue = require("express-vue");
+var path    = require("path");
+
+const expressVueMiddleware = expressVue.init();
+
+app.use(expressVueMiddleware);
 
 app.get('/', (req, res) => {
-    res.send('live agent page here')
+    res.sendFile(path.join(__dirname+'/index.html'));
 })
 
 
