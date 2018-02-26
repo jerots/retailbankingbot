@@ -20,7 +20,7 @@
             <li>Speak to someone</li>
         </ul>
         <el-button size="small" @click.native="clear()">Clear</el-button>
-        <h3 v-for="message in messages">{{ message }}</h3>
+        <h4 v-for="message in messages">{{ message }}</h4>
         <el-input v-model="input" @keydown.enter.native="submit()"></el-input>
     </div>
 
