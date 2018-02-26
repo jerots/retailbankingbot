@@ -32,11 +32,12 @@
                 input: '',
                 port: '',
                 host: '',
+                fullhost: '',
             },
             methods: {
                 submit() {
                     $.ajax({
-                        url: this.host + ':' + this.port + '/api/chatbot/',
+                        url: this.fullhost + '/api/chatbot/',
                         data: {
                             text: this.input
                         },
@@ -61,6 +62,7 @@
                 var headers = req.getAllResponseHeaders().toLowerCase();
                 this.host = req.getResponseHeader('process.env.host');
                 this.port = req.getResponseHeader('process.env.port');
+                this.fullhost = req.getResponseHeader('process.env.fullhost');
                 console.log(headers)
                 // const socket = io.connect("https://localhost:3000/");
                 // console.log('socket', socket);

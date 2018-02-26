@@ -18,6 +18,7 @@ app.use(function (req, res, next) {
 
 const port = process.env.PORT || 3000
 const host = process.env.PORT ? 'https://retailbankingbot.herokuapp.com' : 'http://localhost'
+const fullhost = process.env.PORT ? 'https://retailbankingbot.herokuapp.com' : 'http://localhost:' + port
 
 app.get('/', (req, res) => {
     console.log('port', port)
@@ -27,7 +28,8 @@ app.get('/', (req, res) => {
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
             'Access-Control-Allow-Methods': 'POST, GET, PATCH, DELETE, OPTIONS',
             'process.env.PORT': port,
-            'process.env.HOST': host
+            'process.env.HOST': host,
+            'process.env.FULLHOST': fullhost
         }
     });
 })
