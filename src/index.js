@@ -46,7 +46,7 @@ function parse(text) {
     if (text.trim().length === 0) { return { text: "Sorry, I didn't get what you were trying to say" } }
 
     // Nearest branch
-    if (/\b(nearest branch|where)\b/i.test(text)) { return { text: "The nearest HSBC branch to you is located at 68 Orchard Road #01-60 Plaza Singapura, 238839." } }
+    if (/\b(nearest branch|where|how to go|how do i go)\b/i.test(text)) { return { text: "The nearest HSBC branch to you is located at 68 Orchard Road #01-60 Plaza Singapura, 238839." } }
     if (/\b(nearest atm)\b/i.test(text)) { return { text: "The nearest HSBC ATM to you is located at 68 Orchard Road #01-60 Plaza Singapura, 238839." } }
     if (/\b(nearest)\b/i.test(text)) { return { text: "Are you looking for the nearest branch or nearest ATM?" } }
 
