@@ -7,6 +7,11 @@ const expressVueMiddleware = expressVue.init();
 
 app.use(expressVueMiddleware);
 
+if (process.env.HOST === undefined){
+    var host = req.headers.host.replace(/:\d+$/, '');
+    process.env.HOST     = host;
+}
+
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
