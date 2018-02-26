@@ -1,5 +1,52 @@
 <html>
-    <body>
-        <h1>Hi</h1>
-    </body>
+
+<head>
+    <title>HSBC LiveDesk</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Chatbot Explorer</h1>
+        <h2 v-for="message in messages">{{ message }}</h2>
+        <el-input v-model="input" @keydown.enter.native="submit()"></el-input>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                messages: [],
+                input: ''
+            },
+            methods: {
+                submit() {
+                    $.ajax({
+                        url: "http://localhost:3000/api/chatbot/",
+                        data: {
+                            text: this.input
+                        },
+                        context: this,
+                        success: (data) => {
+                            console.log('success',data);
+                            const dataObj = JSON.parse(data);
+                            this.messages.push('You: ' + this.input)
+                            this.messages.push('Bot: ' + dataObj.text);
+                        }
+                    }).done(()=> { this.input = ""; })
+                    
+                }
+            },
+            mounted() {
+                const socket = io.connect("localhost:3000");
+                console.log('socket', socket);
+            }
+        })
+    </script>
+</body>
+
 </html>

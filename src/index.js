@@ -13,22 +13,24 @@ app.get('/', (req, res) => {
 
 
 app.get('/api/chatbot', (req, res) => {
-    let text = ''
-    try {
-        text = JSON.parse(req.query.text);
-    } catch (e) {
-        console.log('error', e);
-        res.send({ text: "Invalid Message" })
-    }
-    const response = parse(text.text);
+    let data = req.query;
+    // try {
+    //     text = JSON.parse(req.query.text);
+    // } catch (e) {
+    //     console.log('error', e);
+    //     res.send({ text: "Invalid Message" })
+    // }
+    const response = parse(data.text);
 
     res.send(JSON.stringify(response));
 
 })
 
-app.listen(process.env.PORT || 3000, () => console.log('app listening on port 3000'))
+const io = require('socket.io').listen(app.listen(process.env.PORT || 3000, () => console.log('app listening on port 3000')))
 
-
+io.on("connection", (socket) => {
+    console.log("connected");
+})
 
 
 function parse(text) {

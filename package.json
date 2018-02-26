@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "element-ui": "^2.2.0",
     "express": "^4.16.2",
     "express-vue": "^5.1.4",
+    "socket.io": "^2.0.4",
     "webpack": "^4.0.0",
     "webpack-cli": "^2.0.9"
   }
