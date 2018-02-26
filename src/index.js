@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 });
 
 const port = process.env.PORT || 3000
-const host = process.env.PORT ? 'https://retailbankingbot.herokuapp.com/' || 'http://localhost/';
+const host = process.env.PORT ? 'https://retailbankingbot.herokuapp.com/' : 'http://localhost/'
 
 app.get('/', (req, res) => {
     console.log('port', port)
