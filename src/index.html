@@ -36,7 +36,7 @@
             methods: {
                 submit() {
                     $.ajax({
-                        url: 'http://' + this.host + ':' + this.port + '/api/chatbot/',
+                        url: this.host + ':' + this.port + '/api/chatbot/',
                         data: {
                             text: this.input
                         },

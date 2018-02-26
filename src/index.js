@@ -7,10 +7,7 @@ const expressVueMiddleware = expressVue.init();
 
 app.use(expressVueMiddleware);
 
-if (process.env.HOST === undefined){
-    var host = req.headers.host.replace(/:\d+$/, '');
-    process.env.HOST     = host;
-}
+
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -20,7 +17,7 @@ app.use(function (req, res, next) {
 });
 
 const port = process.env.PORT || 3000
-const host = process.env.HOST || 'localhost'
+const host = process.env.PORT ? 'https://retailbankingbot.herokuapp.com/' || 'http://localhost/';
 
 app.get('/', (req, res) => {
     console.log('port', port)
