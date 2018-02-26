@@ -6,13 +6,20 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div id="app">
         <h1>Chatbot Explorer</h1>
-        <h2 v-for="message in messages">{{ message }}</h2>
+        Currenty supports:
+        <ul>
+            <li>Find nearest branch</li>
+            <li>Account balance enquiry</li>
+            <li>Speak to someone</li>
+        </ul>
+        <h3 v-for="message in messages">{{ message }}</h3>
         <el-input v-model="input" @keydown.enter.native="submit()"></el-input>
     </div>
 
@@ -32,13 +39,13 @@
                         },
                         context: this,
                         success: (data) => {
-                            console.log('success',data);
+                            console.log('success', data);
                             const dataObj = JSON.parse(data);
                             this.messages.push('You: ' + this.input)
                             this.messages.push('Bot: ' + dataObj.text);
                         }
-                    }).done(()=> { this.input = ""; })
-                    
+                    }).done(() => { this.input = ""; })
+
                 }
             },
             mounted() {
