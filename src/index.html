@@ -34,7 +34,7 @@
             methods: {
                 submit() {
                     $.ajax({
-                        url: "http://localhost:3000/api/chatbot/",
+                        url: process.env.HOST + ':' + process.env.PORT + '/api/chatbot',
                         data: {
                             text: this.input
                         },
