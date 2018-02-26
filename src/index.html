@@ -33,16 +33,16 @@
             methods: {
                 submit() {
                     $.ajax({
-                        url: "http://localhost:3000/api/chatbot/",
+                        url: "http://localhost:"+ process.env.PORT +"/api/chatbot/",
                         data: {
                             text: this.input
                         },
+                        dataType: "json",
                         context: this,
                         success: (data) => {
                             console.log('success', data);
-                            const dataObj = JSON.parse(data);
                             this.messages.push('You: ' + this.input)
-                            this.messages.push('Bot: ' + dataObj.text);
+                            this.messages.push('Bot: ' + data.text);
                         }
                     }).done(() => { this.input = ""; })
 
