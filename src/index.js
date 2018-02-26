@@ -14,8 +14,20 @@ app.use(function (req, res, next) {
     next();
 });
 
+const port = process.env.PORT || 3000
+const host = process.env.HOST || 'localhost'
+
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname+'/index.html'));
+    console.log('port', port)
+    res.sendFile(path.join(__dirname+'/index.html'),{
+        headers: {
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+            'Access-Control-Allow-Methods': 'POST, GET, PATCH, DELETE, OPTIONS',
+            'process.env.PORT': port,
+            'process.env.HOST': host
+        }
+    });
 })
 
 
