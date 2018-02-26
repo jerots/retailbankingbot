@@ -60,5 +60,5 @@ function parse(text) {
 
 
     // Fallback
-    return "Sorry I could not find the answer to your question. Could you rephrase it?"
+    return {text: "Sorry I could not find the answer to your question. Could you rephrase it?"}
 }
